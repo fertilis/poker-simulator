@@ -1,0 +1,21 @@
+[package]
+name = "poker-simulator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy = "0.13.2"
+rand = "0.8.5"
+# bevy = { version = "0.13.2", features = ["dynamic_linking"] }
+lazy_static = "1.4.0"
+
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold"]
+
+[profile.release]
+opt-level = 'z'
+lto = "thin"
